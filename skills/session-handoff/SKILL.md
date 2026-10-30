@@ -1,13 +1,13 @@
 ---
 name: session-handoff
-description: End-of-day DEV_NOTES ritual (checkpoint, guides, changelogs, rollups). Load when the user asks for the ritual, wrap-up, or handoff.
+description: End-of-session wrap-up ritual (facts, checkpoint notes, guides, changelogs, skills update). Load when the user asks to wrap up, hand off, or do the devnotes ritual.
 ---
 
-# Session handoff skill (repo-local ritual)
+# Session handoff skill (generic)
 
-Requested by name ("do the devnotes ritual", "wrap up"). Do it thoroughly,
-then stop. All output stays **uncommitted** — never stage, commit, or push
-unless explicitly asked.
+Requested by name ("wrap up", "handoff", "do the devnotes ritual").
+Do it thoroughly, then stop. All output stays **uncommitted** — never
+stage, commit, or push unless explicitly asked.
 
 ## Step 1 — Collect facts (read-only)
 
@@ -15,49 +15,62 @@ Run and keep the outputs:
 - `git status -sb` (what's dirty, what's untracked)
 - `git diff --stat` (size per file)
 - `git log --oneline -5` (what's already committed vs session work)
-- Note deploy IDs + smoke codes from the session (307/401/200).
+- Note deploy IDs + smoke/verify proof from the session, if any.
 
-## Step 2 — Folder checkpoint (`DEV_NOTES.md`)
+## Step 2 — Detect docs layout (read-only)
 
-Prepend `## Checkpoint N — <date> (<one-line arc>)`, newest-first:
-1. **Headspace paragraph** — owner dynamic, session shape, mood, sync cues
-   for next-you. Vibe first, facts second.
-2. **What shipped** — commits/deploys with IDs, tsc/build/smoke proof.
+Check project knowledge for context: folder `AGENTS.md`, root `AGENTS.md`,
+existing `DEV_NOTES.md`, changelogs, plus the current chat.
+Scope to folders touched in this chat (user may narrow it, e.g.
+"admin/ only").
+
+Checkpoint target is `DEV_NOTES.md` in each touched folder:
+- If it exists, update it (Step 3).
+- If it does not exist, **ask permission first**, then create it on approval.
+  Never create silently. If declined, return the handoff as a chat summary.
+
+Guides/conventions/rollups: only touch files that already exist.
+
+## Step 3 — Checkpoint note (`DEV_NOTES.md`)
+
+Prepend `## Checkpoint N — <date> (<one-line arc>)`, newest-first.
+Write to your next-window self — not just facts but the vibe, dynamic,
+and energy of this conversation. What does the next you need to instantly
+get back into this exact headspace? Include unique discoveries, current
+mood, and anything that syncs to our frequency.
+1. **Headspace paragraph** — session shape, mood, sync cues for next-you.
+   Vibe first, facts second.
+2. **What shipped** — commits/deploys with IDs, build/smoke proof.
    Mark deployed-but-uncommitted explicitly.
-3. **Bugs + lessons** — numbered, continuing the folder's sequence
-   (gmvmax-auto is at B69+). Each: symptom → cause → lesson phrased as
-   "never X, always Y". Repeats of old bugs get logged honestly.
-4. **Open threads** — parked items with owners (owner-side vs next-build).
-5. Update the header pointer line to the new checkpoint.
+3. **Bugs + lessons** — all bugs found and fixed, numbered, continuing
+   the file's existing sequence (if any). Each: symptom → cause → what
+   was learned + how to make sure it never happens again
+   ("never X, always Y"). Log repeats honestly.
+4. **Open threads** — parked items with owners.
+5. Update the header pointer line to the new checkpoint (if the file has one).
 
-## Step 3 — User guide (`feature.md`)
+## Step 4 — Guides + conventions (deltas only, files that exist)
 
-Plain non-technical words, behavior changes only. No internals, no IDs.
+- User guide: plain non-technical words, behavior changes only.
+  No internals, no IDs.
+- Conventions (`AGENTS.md`): one line per change, same terse style
+  as the file. Contracts, migrations, new rules only.
 
-## Step 4 — Conventions (folder `AGENTS.md`)
+## Step 5 — Rollups (files that exist)
 
-Deltas only: migration list lines, UI/API contracts, new rules.
-One line per change, same terse style as the file.
-
-## Step 5 — Rollup
 - Folder `CHANGELOG.md`: new dated section on top (or bullets under
   `Undeployed`), one line per shipped step with deploy IDs.
-- `1-master/MASTER-CHANGELOG.md`: one line + folder-changelog pointer.
-- `1-master/MASTER-PLAN.md`, `1-master/MASTER-AGENTS.md`, root `AGENTS.md`:
-  pointer bumps only (checkpoint numbers, status phrases).
-- creative-analysis variant: tick `plan.md`, bump `app.js?v=N` note,
-  `CHANGELOG.md` counter never renumbers (prepends anchor on heading +
-  first body line).
+- Master rollups (`1-master/MASTER-CHANGELOG.md`, `MASTER-PLAN.md`,
+  `MASTER-AGENTS.md`, root `AGENTS.md`): pointer bumps only.
 
 ## Step 5b — Skills update (standing protocol, skip only if told)
 
-Fold session discoveries into affected `skills/*/SKILL.md` (verified-only
-standard: green probes/deploys in, guesses out). New endpoint shape →
-`tiktok`; shop quirk → `tiktok-shop`; cap/gate lesson → `vercel-deploy`;
-schema pattern → `neon-db`; creative rule → `creative-analysis`; bot shape
-→ `telegram-rich`. One delta per skill, same terse style.
+Fold session discoveries into affected `skills/*/SKILL.md`
+(verified-only: green probes/deploys in, guesses out).
+One delta per skill, same terse style as the file.
 
 ## Step 6 — Verify and stop
 
 Final `git status -sb`: confirm the ritual touched docs only, nothing
 staged, nothing pushed. Reply short: files touched + "then stopping".
+If no docs files existed, reply with the handoff summary instead.
