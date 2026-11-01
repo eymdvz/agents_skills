@@ -16,15 +16,9 @@ Central skill collection. Terse, verified-only, deltas only.
 * `DEV_NOTES.md`: update if it exists; if missing, ask permission before creating
 * Never stage, commit, or push unless explicitly asked
 
-## Index
+## Index (global-safe only)
 
-* `calendar-picker` — date-range picker pattern
-* `creative-analysis` — creative-analysis tool + online creative module
-* `neon-db` — Neon conventions (migrations, branches, patterns)
 * `session-handoff` — end-of-session wrap-up ritual
-* `telegram-rich` — Telegram delivery rules
-* `tiktok-ads` — TikTok Ads measurement/creative/audience/bidding
-* `tiktok-api` — verified TikTok API shapes
-* `tiktok-shop` — verified TikTok Shop API shapes
-* `ttam-metrics` — TTAM glossary + kill/scale/watch verdicts
-* `vercel-deploy` — Vercel deploy ritual + Hobby caps
+
+Repo-local skills (marketer, haji-awang-family, etc.) live in each
+repo's own `skills/` + per-project `skills` entry, not here.
