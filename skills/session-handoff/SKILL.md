@@ -20,13 +20,17 @@ Run and keep the outputs:
 ## Step 2 — Detect docs layout (read-only)
 
 Check project knowledge for context: folder `AGENTS.md`, root `AGENTS.md`,
-existing `DEV_NOTES.md`, changelogs, plus the current chat.
+existing `DEV_NOTES.md` (folder root AND `<folder>/docs/DEV_NOTES.md`),
+changelogs, plus the current chat.
 Scope to folders touched in this chat (user may narrow it, e.g.
 "admin/ only").
 
-Checkpoint target is `DEV_NOTES.md` in each touched folder:
-- If it exists, update it (Step 3).
-- If it does not exist, **ask permission first**, then create it on approval.
+Checkpoint target is `DEV_NOTES.md` in each touched folder (root first,
+then `docs/` subfolder):
+- If it exists in either spot, update it there (Step 3).
+- If it does not exist, **ask permission first**, offering placement:
+  `docs/` subfolder, folder root, or elsewhere — then create where
+  chosen on approval.
   Never create silently. If declined, return the handoff as a chat summary.
 
 Guides/conventions/rollups: only touch files that already exist.
