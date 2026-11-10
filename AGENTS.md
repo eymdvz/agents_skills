@@ -19,6 +19,7 @@ Central skill collection. Terse, verified-only, deltas only.
 ## Index (global-safe only)
 
 * `session-handoff` — end-of-session wrap-up ritual
+* `git-clone-setup` — post-clone Git/GCM + repo-local identity setup (Windows)
 
 Repo-local skills (marketer, haji-awang-family, etc.) live in each
 repo's own `skills/` + per-project `skills` entry, not here.
