@@ -73,6 +73,12 @@ Fold session discoveries into affected `skills/*/SKILL.md`
 (verified-only: green probes/deploys in, guesses out).
 One delta per skill, same terse style as the file.
 
+## Step 5c — Notion TO DO mirror (skip only if told)
+
+Follow the `notion-mcp-todolist` skill: row ops only (add rows /
+tick Done / flip Status on the mapped Todos database). Never rewrite
+the draft page body; % recomputes itself. Mapping lives there.
+
 ## Step 6 — Verify and stop
 
 Final `git status -sb`: confirm the ritual touched docs only, nothing
