@@ -20,6 +20,13 @@ Central skill collection. Terse, verified-only, deltas only.
 
 * `session-handoff` — end-of-session wrap-up ritual
 * `git-clone-setup` — post-clone Git/GCM + repo-local identity setup (Windows)
+* `browser-access` — real-Chrome driving via browse relay (per-profile pairing, per-PC mapping)
+* `notion-mcp-todolist` — repo TODO queues in Notion (sweep, triage, live % rollups)
+* `skills-checkup` — registry-vs-repo drift sweep + map refresh
+
+Per-repo `skills/` dirs hold repo-local skills only; `session-handoff`
+and `browser-access` live here (global registered set) and must not be
+duplicated per repo.
 
 Repo-local skills (marketer, haji-awang-family, etc.) live in each
 repo's own `skills/` + per-project `skills` entry, not here.

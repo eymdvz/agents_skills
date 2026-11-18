@@ -20,6 +20,17 @@ gets a stable browser id (`chrome-<machine>[-2]`, machine name slugged).
    (valid 10 min) → user enters it on the page → Pair.
 4. Agent verifies: `status` lists the new browser id.
 
+## Relay
+
+- `browse pair --list` first: auto-starts a stopped relay AND shows
+  pairing + `last seen` in one shot (verified 2026-11-15: relay down,
+  CLI revived it, all 3 paired).
+- Stale `last seen` = extension not phoning home: open the profile
+  window, check the toggle, re-pair if needed.
+- `browse serve` keeps the relay up for a session (foreground);
+  logon-task autostart is opt-in only — quote pros/cons, register
+  on explicit go.
+
 ## Mapping (canonical — this table is the truth)
 
 | PC | Chrome profile | Gmail | Browse id |
@@ -46,3 +57,7 @@ Direction is one-way: repo table → local mirror (manual copy).
 - Settings (`window`, `grouping`) are user-owned: read to explain where
   tabs land, never change unasked.
 - `status` before assuming which browsers exist; ids differ per machine.
+- Safety (standing owner orders): agreed tabs only, close agent tabs
+  after; never kill/restart Chrome, never sign in as the user (stop
+  before login/2FA, owner completes it); describe destructive or
+  logged-in-sensitive clicks first, act on explicit go.

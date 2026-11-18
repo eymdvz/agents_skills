@@ -1,5 +1,33 @@
 # DEV_NOTES.md — agents_skills
 
+## Checkpoint 3 — 2026-11-15 (relay check + skills-checkup)
+
+Owner-driven follow-ups from a marketer session, all uncommitted. `browser-access` gains a Relay section (`pair --list` as first move: auto-starts stopped relay + shows pairing/`last seen`; stale `last seen` = extension not phoning home; `serve`/autostart opt-in with pros/cons). New global `skills-checkup` routine (operate-on-repos, never per-repo copies) + registered in SKILLS-MAP; first pass: marketer `tiktok-ads` on disk but missing from map row — added. `claude system/` bundle left untouched (other session active).
+
+## Checkpoint 2 — 2026-11-14 (global-only skills consolidation)
+
+Follow-up to Cp1, same session. Owner ordered per-repo `session-handoff` / `browser-access` copies removed, global registered set only. Sparring mode was on for the mapping design (challenged reader/scope/freshness assumptions); landed: root `SKILLS-MAP.md`, remote-URL keyed, no local paths, no Notion wiring.
+
+### What shipped (all uncommitted, nothing pushed)
+
+- Deleted 5 dirs: marketer `skills/session-handoff` + `skills/browser-access`, unija-map both, haji `skills/session-handoff`. Verified via `git status` in all 4 repos (marketer shows D x2 among its big pre-existing dirty tree; unija-map/haji trees otherwise clean).
+- Salvage before delete: local copies were divergent rituals (End-of-day, B69+, smoke codes) vs generic global. Method-agnostic safety rules folded into global `browser-access` driving rules (agreed tabs, close after, never kill Chrome, never sign in, describe-then-act). Marketer `AGENTS.md:24` repointed to the global skill. Repo-specific numbers already live in those repos' own DEV_NOTES.
+- New `SKILLS-MAP.md`: global 4 + per-repo table (marketer 12 + 1 skill-less folder flagged; dev/unija-info no dir; unija-map+haji dirs now empty) + global-only policy + freshness rule. `session-handoff` Step 5b hooks the refresh.
+- Not checked: unija-map DEV_NOTES history still references local skills (left as history); haji `opencode.json` still wires now-empty `./skills` (harmless, global resolves; removal is owner call); marketer grew new untracked `all-creative/` dirs mid-session (not mine — owner or another agent active in parallel).
+- Step 5c Notion: skipped with reason — touched mapped repo (marketer) got config/deletion edits only, no queue-worthy shipped work or new threads.
+
+### Bugs + lessons
+
+7. Sparring-mode finding that held up: a static map rots unless something owns refresh — hence the Step 5b hook, not just the file. A map without a refresh rule is a liability, not an asset.
+8. Deletion diffs first, always: the "identical" local skills turned out to be divergent rituals with owner history (`don't touch` notes in unija-map DEV_NOTES). User overrode explicitly; without that, deleting would have been wrong.
+9. `git status` per repo before wrap-up caught parallel activity (marketer `all-creative/` appeared mid-session). Never assume a dirty tree is all yours.
+
+### Open threads
+
+- Owner: commit/push rounds for agents_skills (Cp1+Cp2 batch), marketer, unija-map, haji — 4 separate decisions, nothing staged anywhere.
+- haji `opencode.json` `./skills` wiring vs empty dir — tidy-up is owner call.
+- `0-tiktok-agentic-hub-library/` still has no SKILL.md (flagged in map, owner call whether to write or drop it).
+
 ## Checkpoint 1 — 2026-11-14 (browser + Notion todo system build-out)
 
 Big build session, all output uncommitted per standing rule. Arc: paired a 3rd Chrome profile → proved Notion MCP → mapped repos to Notion todo pages → swept 90 marketer todos → triaged with live % → converted to Notion databases → new `notion-mcp-todolist` skill → built the unija queue → closed the SALASILAH cron question from history. Mood: fast, user driving scope ("go"), me executing; two Plan-mode interludes, both exited cleanly.

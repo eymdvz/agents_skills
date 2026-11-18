@@ -72,6 +72,8 @@ mood, and anything that syncs to our frequency.
 Fold session discoveries into affected `skills/*/SKILL.md`
 (verified-only: green probes/deploys in, guesses out).
 One delta per skill, same terse style as the file.
+If skills were added, removed, or re-homed, refresh `SKILLS-MAP.md`
+in the same session.
 
 ## Step 5c — Notion TO DO mirror (skip only if told)
 
